@@ -30,8 +30,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Sağ tıkla mermi ateşleme
-    gameArea.addEventListener("contextmenu", (event) => {
+    // Sol tıkla mermi ateşleme
+    gameArea.addEventListener("click", (event) => {
         event.preventDefault();
         if (gameStarted && ammo > 0) {
             ammo--;
