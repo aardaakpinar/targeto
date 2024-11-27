@@ -8,7 +8,7 @@
 
 body {
     margin: 0;
-    font-family: 'Arial', sans-serif;
+    font-family: "Arial", sans-serif;
     background-color: #1e1e1e;
     color: white;
     overflow: hidden;
@@ -61,7 +61,10 @@ body {
     margin-right: 10px;
 }
 
-#kill, #health, #ammo, #wave {
+#kill,
+#health,
+#ammo,
+#wave {
     font-size: 25px;
     padding: 15px;
     margin: 10px;
@@ -128,8 +131,12 @@ body {
 
 /* Başlangıç Animasyonu */
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 /* Responsive Tasarım */
@@ -149,7 +156,9 @@ body {
         padding: 10px 20px;
     }
 
-    #kill, #health, #ammo {
+    #kill,
+    #health,
+    #ammo {
         font-size: 14px;
         padding: 8px;
         margin: 5px;
