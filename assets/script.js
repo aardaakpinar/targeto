@@ -48,22 +48,21 @@ document.addEventListener("DOMContentLoaded", () => {
         const characterRect = character.getBoundingClientRect();
         const characterCenterX = characterRect.left + characterRect.width / 2;
         const characterCenterY = characterRect.top + characterRect.height / 2;
-    
+
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-    
+
         // Karakter ile mouse arasındaki yatay ve dikey farkı hesapla
         const deltaX = mouseX - characterCenterX;
         const deltaY = mouseY - characterCenterY;
-    
+
         // Aradaki açıyı hesapla (radyan cinsinden)
         const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI); // Radyanı dereceye çevir
-    
+
         // Karakteri bu açıya göre döndür (transform-origin: center ile merkezden döner)
-        character.style.transform = `translateX(-50%) rotate(${angle+90}deg)`;
-        console.log(angle)
+        character.style.transform = `translateX(-50%) rotate(${angle + 90}deg)`;
+        console.log(angle);
     });
-    
 
     // Mermi oluştur ve hareket ettir
     function fireBullet(event) {
@@ -135,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isReloading) {
             isReloading = true;
             console.log("Reloading...");
-            reload()
+            reload();
         } else {
             if (ammo < 6) {
                 setTimeout(() => {
@@ -144,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (ammo == 6) {
                         isReloading = false;
                     } else {
-                        reload()
+                        reload();
                     }
                 }, reloadTime);
             } else {
@@ -164,46 +163,45 @@ document.addEventListener("DOMContentLoaded", () => {
         enemy.style.height = "40px";
         enemy.style.backgroundColor = "red";
         enemy.style.borderRadius = "50%";
-    
+
         gameArea.appendChild(enemy);
-    
+
         // Dalga sayısına göre zorluk arttırma
         const enemySpeed = 1 + waveNumber * 0.1; // Hız artışı
         const enemyHealth = 10 + waveNumber * 5; // Can artışı
         const attackDistance = 10 + waveNumber * 5; // Vurma mesafesi artışı
-    
+
         // Düşman hareketi (karaktere doğru yaklaşacak şekilde hareket)
         const enemyInterval = setInterval(() => {
             const enemyRect = enemy.getBoundingClientRect();
             const characterRect = character.getBoundingClientRect();
-    
+
             // Düşman ile karakter arasındaki mesafeyi hesapla
             const dx = characterRect.left + characterRect.width / 2 - (enemyRect.left + enemyRect.width / 2);
             const dy = characterRect.top + characterRect.height / 2 - (enemyRect.top + enemyRect.height / 2);
             const distance = Math.sqrt(dx * dx + dy * dy);
-    
+
             // Yavaşça hareket et (hız)
             const velocityX = (dx / distance) * enemySpeed;
             const velocityY = (dy / distance) * enemySpeed;
-    
+
             // Düşmanı hareket ettir
             enemy.style.left = `${enemyRect.left + velocityX}px`;
             enemy.style.top = `${enemyRect.top + velocityY}px`;
-    
+
             // Düşman 10px'e yaklaşırsa oyuncunun canını azalt
             if (distance <= attackDistance) {
                 health -= 10; // Canı azalt
                 updateUI(); // UI'yi güncelle
                 enemy.remove(); // Düşmanı kaldır
                 clearInterval(enemyInterval); // Düşmanın hareketini durdur
-    
+
                 if (health <= 0) {
                     endGame(); // Oyunu bitir
                 }
             }
         }, 30); // Düşman hareketi 30ms'de bir güncellenir
-    }    
-
+    }
 
     // Düşmanları sürekli oluştur
     function startEnemySpawner() {
@@ -212,14 +210,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 createEnemy();
             }
         }, 2000 - waveNumber * 200); // Dalga sayısına göre hızlanma
-    }    
+    }
 
     setInterval(() => {
         if (gameStarted) {
             waveNumber++; // Dalga numarasını artır
         }
     }, 10000); // 10 saniyede bir dalga artışı
-    
 
     // UI güncelleme
     function updateUI() {
