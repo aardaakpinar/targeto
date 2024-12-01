@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     setInterval(() => {
         if (gameStarted) {
-            waveNumber = waveNumber + 5;
+            waveNumber++;
             if (waveNumber % 10 === 0) {
                 showUpgradeMenu();
             }
