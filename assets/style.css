@@ -177,7 +177,8 @@ body {
 
     #kill,
     #health,
-    #ammo {
+    #ammo,
+    #bomb {
         font-size: 14px;
         padding: 8px;
         margin: 5px;
