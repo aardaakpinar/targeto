@@ -80,6 +80,7 @@ body {
     transform: translateX(-50%);
     width: 100px;
     height: 100px;
+    bottom: 10px;
     background-color: #ffcc00;
     border-radius: 50%;
     display: flex;
