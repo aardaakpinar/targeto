@@ -219,12 +219,12 @@ document.addEventListener("DOMContentLoaded", () => {
         let attackDistance;
         switch (enemyType) {
             case "green":
-                enemySpeed = 1;
+                enemySpeed = 1.2;
                 enemyHealth = 10;
                 enemy.style.backgroundColor = "#4bf275";
                 break;
             case "cyan":
-                enemySpeed = 1.5;
+                enemySpeed = 1.7;
                 enemyHealth = 10;
                 enemy.style.backgroundColor = "#a0e8ff";
                 break;
@@ -404,15 +404,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             if (waveNumber > 50) {
                 enemyTypes = ["green", "cyan", "blue", "purple", "pink", "red"];
-            } else if (waveNumber > 45) {
-                enemyTypes = ["green", "cyan", "blue", "purple", "pink"];
             } else if (waveNumber > 40) {
-                enemyTypes = ["green", "cyan", "blue", "purple"];
-            } else if (waveNumber > 35) {
-                enemyTypes = ["green", "cyan", "blue"];
+                enemyTypes = ["green", "cyan", "blue", "purple", "pink"];
             } else if (waveNumber > 30) {
-                enemyTypes = ["green", "cyan"];
+                enemyTypes = ["green", "cyan", "blue", "purple"];
             } else if (waveNumber > 25) {
+                enemyTypes = ["green", "cyan", "blue"];
+            } else if (waveNumber > 20) {
+                enemyTypes = ["green", "cyan"];
+            } else if (waveNumber > 15) {
                 enemyTypes = ["green"];
             }
         }
