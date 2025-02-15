@@ -1,187 +1,91 @@
-/* Genel Stiller */
-* {
-    user-select: none;
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #b0e079;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    font-family: "Arial", sans-serif;
-    background-color: #1e1e1e;
-    color: white;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
+.help {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 15px;
 }
 
-/* Oyun Alanı */
-#game-area {
-    position: relative;
+.gameover {
     width: 100%;
-    height: 100vh;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
 }
 
-/* Logo */
-.logo {
+.gameover img {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.gameover div {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 350px;
+    animation: fadeIn 1s ease-in-out;
+    color: white;
+}
+
+.gameover h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    color: white;
+    text-transform: uppercase;
+}
+
+
+
+
+
+.gamestart {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.gamestart img {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
     animation: fadeIn 1s ease-in-out;
 }
 
-/* Arayüz */
-#ui {
-    display: flex;
-    top: 0;
-    left: 0;
-    position: fixed;
-    justify-content: space-between;
-    align-items: center;
-    color: #ccc;
-    z-index: 10;
-}
-
-#ui div {
-    display: flex;
-    align-items: center;
-}
-
-#ui div img {
-    width: 30px;
-    margin-right: 10px;
-}
-
-#kill,
-#health,
-#ammo,
-#bomb {
-    font-size: 25px;
-    padding: 15px;
-    margin: 10px;
-    background-color: #111;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-}
-
-/* Karakter */
-#character {
+.gamestart div {
     position: absolute;
+    top: 65%;
     left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    bottom: 10px;
-    background-color: #ffcc00;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transform-origin: center;
-    transition: transform 0.1s linear;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    animation: fadeIn 1s ease-in-out;
+    color: white;
 }
 
-/* Karakter Elleri */
-.hand {
-    position: absolute;
-    width: 30px;
-    height: 30px;
-    background-color: #ffcc00;
-    border-radius: 50%;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
-}
-
-.left-hand {
-    top: 5px;
-    left: -25px;
-}
-
-.right-hand {
-    top: 5px;
-    right: -25px;
-}
-
-/* Düşman */
-.enemy {
-    position: absolute;
-    width: 50px;
-    height: 50px;
-    background-color: #ff4444;
-    border-radius: 50%;
-}
-
-/* Mermi */
-.bullet {
-    position: absolute;
-    width: 10px;
-    height: 10px;
-    background-color: yellow;
-    border-radius: 50%;
-    z-index: 5;
-}
-
-.bomb {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    animation: bomb-fall 0.3s ease-in;
-}
-
-.explosion {
-    box-shadow: 0 0 30px rgba(255, 69, 0, 0.5);
-}
-
-@keyframes bomb-fall {
-    from {
-        transform: scale(0.5);
-    }
-    to {
-        transform: scale(1);
-    }
-}
-
-
-/* Başlangıç Animasyonu */
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
-/* Responsive Tasarım */
-@media (max-width: 768px) {
-    #character {
-        width: 80px;
-        height: 80px;
-        bottom: 30px;
-    }
-
-    .hand {
-        width: 25px;
-        height: 25px;
-    }
-
-    #reload {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-
-    #kill,
-    #health,
-    #ammo,
-    #bomb {
-        font-size: 14px;
-        padding: 8px;
-        margin: 5px;
-    }
+.gamestart div span {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px;
+    border-radius: 5px;
 }
