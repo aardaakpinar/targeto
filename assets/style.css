@@ -54,6 +54,41 @@ body {
 
 
 
+.notSupport {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+}
+
+.notSupport img {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.notSupport div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: fadeIn 1s ease-in-out;
+    color: white;
+}
+
+.notSupport h1 {
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 70px;
+    color: white;
+    text-transform: uppercase;
+}
 
 
 .gamestart {

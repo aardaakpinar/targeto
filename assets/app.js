@@ -1,3 +1,12 @@
+function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+if (isMobileDevice()) {
+    document.querySelector("div.notSupport").style.display = "block";
+    document.querySelector("div.gamestart").style.display = "none";
+}
+
 function generateRandomTextMap(rows, cols) {
     const elements = ['W',' ', 'P'];  // Harita öğeleri (boşluk, oyuncu)
     const enemyChance = 0.05; // Düşman yerleştirme olasılığı
@@ -470,8 +479,8 @@ var Enemy = function (x, y) {
                 enemyLength--;
 
                 if (enemyLength === 0) {
-                    // oyunu yeniden başlatma fonksiyonu
-
+                    alert("Tüm düşmanlar öldü");
+                    window.location.reload();
                 }
             }
         }
