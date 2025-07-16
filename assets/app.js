@@ -339,11 +339,16 @@ var Player = function (x, y) {
     this.damageVelocity = { x: 0, y: 0 };
     this.health = 100;
     this.dead = false;
+    const deathSound = new Audio("./sounds/death.mp3");
+    const hurtSound = new Audio("./sounds/hurt.mp3");
+    deathSound.volume = 1;
+    hurtSound.volume = 1;
 
     this.takeDamage = function (enemy) {
         if (this.canTakeDamage) {
             var vectorX = this.x - enemy.x;
             var vectorY = this.y - enemy.y;
+            hurtSound.play();
 
             var length = Math.sqrt(vectorX * vectorX + vectorY * vectorY);
 
@@ -357,10 +362,10 @@ var Player = function (x, y) {
 
                 if (this.health == 0) {
                     this.dead = true;
+                    deathSound.play();
 
-                    setTimeout(function () {
-                        gameover.style.display = "block";
-                    }, 1000);
+                    alert("Game Over");
+                    window.location.reload();
                 }
             }
         }
@@ -459,6 +464,8 @@ var Enemy = function (x, y) {
     this.canBePushedByBullet = true;
     this.health = 100;
     this.dead = false;
+    const deathSound = new Audio("./sounds/death.mp3");
+    deathSound.volume = 1;
 
     this.pushAlong = function (vectorX, vectorY) {
         this.pushAlongVelocity.x = vectorX * 10;
@@ -477,6 +484,8 @@ var Enemy = function (x, y) {
             if (this.health == 0) {
                 this.dead = true;
                 enemyLength--;
+                
+                deathSound.play();
 
                 if (enemyLength === 0) {
                     alert("Tüm düşmanlar öldü");
@@ -785,6 +794,9 @@ var BulletManager = function () {
     this.bullets = [];
     this.indexesToDelete = [];
 
+    const shotgunSound = new Audio("./sounds/shotgun.mp3");
+    shotgunSound.volume = 0.3;
+
     this.update = function () {
         if (this.canSpawn && !player.dead) {
             if (mouse.pressed) {
@@ -792,6 +804,9 @@ var BulletManager = function () {
                     var bullet = new Bullet(i);
                     this.bullets.push(bullet);
                 }
+
+                shotgunSound.currentTime = 0; // Ses her zaman baştan başlasın
+                shotgunSound.play();
 
                 this.canSpawn = false;
             }
@@ -813,7 +828,7 @@ var BulletManager = function () {
             }
         }
 
-        for (var i = 0; i < this.indexesToDelete.length; i++) {
+        for (var i = this.indexesToDelete.length - 1; i >= 0; i--) {
             this.bullets.splice(this.indexesToDelete[i], 1);
         }
     };
@@ -825,6 +840,7 @@ var BulletManager = function () {
     };
 };
 
+
 // SETUP
 
 var canvas = document.querySelector("canvas#main");
@@ -832,7 +848,6 @@ var context = canvas.getContext("2d");
 var keyboard = { up: false, down: false, left: false, right: false };
 var mouse = { x: 0, y: 0, pressed: false };
 
-var gameover = document.querySelector("div.gameover");
 var gamestart = document.querySelector("div.gamestart");
 
 var entities = [];
